@@ -92,9 +92,11 @@
         isAssess:"",
         isRegister:false,
 				// 表单数据
+				// bug fixes
 				loginForm:{
-          id:"",
-          workName:""
+				workNo: '',
+				password: '',
+				roleId: ''
 				},
 		    communities:[],
         options: [
@@ -176,10 +178,8 @@
 		},
 			async selectAddress(){
 			  const {data:res} = await this.$http.get("/User/address");
-			  this.communities = res;
-			},
-			editClosed(){
-			  this.$refs.addFormRef.resetFields();//重置信息
+			  //bug fixes
+			  this.communities = res.data;
 			},
 
       //重置表单内容
