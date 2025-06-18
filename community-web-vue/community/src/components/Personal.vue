@@ -90,7 +90,19 @@ export default {
       }
     }
     return{
-      personalForm:{},
+      personalForm:{
+        workNo:"",
+        username:"",
+        sex:"",
+        phone:"",
+        communityCd:"",
+        roleId:"",
+        hospitalId:"",
+        departmentId:"",
+        password:"",
+        newPassword:"",
+        passwordConfirm:""
+      },
       options: [
         {
           roleId: '1',

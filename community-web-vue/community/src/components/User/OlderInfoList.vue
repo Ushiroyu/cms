@@ -227,8 +227,20 @@ export default {
       insertOlder:false,
       editOlderForm:{
         photo:"",
+        communityCd:"",
+        olderName:"",
+        userId:"",
+        address:"",
+        medicalHistory:""
       },
-      addOlderForm:{olderAge:""},
+      addOlderForm:{
+        olderAge:"",
+        communityCd:"",
+        olderName:"",
+        userId:"",
+        medicalHistory:"",
+        photo:""
+      },
       editDialogVisible: false,
       addFormRules:{
         photo:[

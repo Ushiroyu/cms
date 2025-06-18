@@ -159,7 +159,12 @@ export default {
   data(){
     return{
       imgUrl:"",
-      queryInfo:{},
+      queryInfo:{
+        communityCd:"",
+        restaurant:"",
+        pageNum:1,
+        pageSize:10
+      },
       addFoodOrderForm:{
         foodNumber:0,
         foodPrice: ""
@@ -170,10 +175,19 @@ export default {
       foodList:[],
       isMenu:false,
       isAddFood:false,
-      addMenuForm:{},
+      addMenuForm:{
+        communityCd:"",
+        restaurant:""
+      },
       total:0,
       token:"",
-      addFoodForm:{},
+      addFoodForm:{
+        communityCd:"",
+        restaurant:"",
+        foodName:"",
+        foodPrice:"",
+        foodImgUrl:""
+      },
       addMenuFormRules:{
         communityCd:[
           {required: true,message:"请输入社区编号",trigger:"blur"}
