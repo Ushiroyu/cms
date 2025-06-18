@@ -220,14 +220,8 @@ export default {
       },
       imgUrl:"",
       isDisabled:false,
-      communities:[{
-        communityCd:"",
-        communityName:""
-      }],
-      userList:[{
-        userId:"",
-        username:""
-      }],
+      communities:[],
+      userList:[],
       token:"",
       total:0,//总记录数
       insertOlder:false,
@@ -290,11 +284,11 @@ export default {
     },
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res;
+      this.communities = Array.isArray(res.data) ? res.data : [];
     },
     async selectUserList(){
       const {data:res} = await this.$http.get("/older/userList")
-      this.userList = res;
+      this.userList = res || [];
     },
     search(){
       this.queryInfo.pageNum = 1;
