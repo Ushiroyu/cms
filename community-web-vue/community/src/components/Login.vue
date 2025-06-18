@@ -196,7 +196,7 @@ export default {
     // 获取社区列表
     async selectAddress() {
       const { data: res } = await this.$http.get('/User/address');
-      this.communities = res || [];
+      this.communities = Array.isArray(res) ? res.filter(item => item) : [];
     },
     // 登录
     login() {

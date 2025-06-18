@@ -284,7 +284,7 @@ export default {
     },
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res || [];
+      this.communities = Array.isArray(res) ? res.filter(item => item) : [];
     },
     // 监听添加用户
     insertClosed(){
