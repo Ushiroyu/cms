@@ -145,16 +145,7 @@ export default {
       }
     }
     return{
-      communities:[{
-        id:0,
-        communityCd:'',
-        communityName:'',
-        communityPlace:'',
-        communityArea:'',
-        peopleNumber:0,
-        oldNumber:0,
-        updateTime:'',
-      }],
+      communities:[],
       communityList:[],
       // 查询信息实体
       queryInfo:{
@@ -228,7 +219,7 @@ export default {
     },
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res;
+      this.communities = res || [];
     },
     async showInfo(id){
         this.isShowInfo = true;
