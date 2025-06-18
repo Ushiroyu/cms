@@ -21,6 +21,8 @@ import Appointment from "@/components/mutualAid/Pharmacy/Appointment";
 import ShoppingMall from "@/components/mutualAid/shoppingMall";
 import foodBusiness from "@/components/mutualAid/Food/foodBusiness";
 import Personal from "@/components/Personal";
+import DoctorList from "@/components/doctor/DoctorList";
+import HealthReminder from "@/components/healthfiles/HealthReminder";
 Vue.use(VueRouter)
 
 const routes = [
@@ -91,6 +93,10 @@ const routes = [
         component: repast,
       },
       {
+        path:"/doctors",
+        component: DoctorList,
+      },
+      {
         path:"/pharmacy",
         component: Pharmacy,
       },
@@ -109,6 +115,10 @@ const routes = [
       {
         path: "/foodBusiness",
         component: foodBusiness,
+      },
+      {
+        path:"/reminder",
+        component: HealthReminder,
       },
       {
         path:"/personal",
