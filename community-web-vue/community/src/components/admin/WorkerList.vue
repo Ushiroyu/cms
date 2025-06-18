@@ -362,7 +362,9 @@ export default {
     },
     //监听添加
     insertClosed() {
-      this.$refs.editFormRef.resetFields();//重置信息
+      if(this.$refs.addFormRef){
+        this.$refs.addFormRef.resetFields();//重置信息
+      }
     }
   }
 }

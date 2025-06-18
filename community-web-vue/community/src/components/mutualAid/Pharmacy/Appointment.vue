@@ -258,7 +258,12 @@ export default {
       })
     },
     addClosed(){
-      this.$refs.addHospitalFormRef.resetFields();
+      if(this.$refs.addHospitalFormRef){
+        this.$refs.addHospitalFormRef.resetFields();
+      }
+      if(this.$refs.addAppointFormRef){
+        this.$refs.addAppointFormRef.resetFields();
+      }
     },
     async getHospitalList(){
       this.token = window.sessionStorage.getItem("roleId")
