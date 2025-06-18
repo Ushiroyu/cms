@@ -175,6 +175,8 @@ export default {
       }],
       // 查询信息实体
       queryInfo:{
+        username:"",
+        communityCd:"",
         pageNum: 1,//当前页
         pageSize: 10,//每页最大数
       },
@@ -184,12 +186,23 @@ export default {
 
       //修改用户信息
       editForm:{
+        communityCd:"",
+        username:"",
+        sex:"",
+        phone:"",
+        roleId:""
       },
       //显示、隐藏修改用户栏
       editDialogVisible:false,
 
       //新增表单信息
       addForm:{
+        communityCd:"",
+        username:"",
+        password:"",
+        sex:"",
+        phone:"",
+        roleId:"4"
       },
       //表单校验
       addFormRules:{
@@ -271,7 +284,7 @@ export default {
     },
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res || [];
+      this.communities = Array.isArray(res) ? res.filter(item => item) : [];
     },
     // 监听添加用户
     insertClosed(){
