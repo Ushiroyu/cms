@@ -168,10 +168,7 @@ export default {
     return{
       token:"",
       isDisabled:false,
-      communities:[{
-        communityCd:'',
-        communityName:''
-      }],
+      communities:[],
       options: [{
         roleId: '4',
         role: '监护人'
@@ -274,7 +271,7 @@ export default {
     },
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res;
+      this.communities = res || [];
     },
     // 监听添加用户
     insertClosed(){
