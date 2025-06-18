@@ -330,12 +330,12 @@ export default {
     },
     async selectOlderDrop(){
       const{data:res} = await this.$http.get("/healthy/olderDrop");
-      this.olderDrop = res;
+      this.olderDrop = Array.isArray(res) ? res.filter(item => item) : [];
     },
 
     async selectWorkDrop(){
       const{data:res} = await this.$http.get("/healthy/workDrop");
-      this.workDrop = res;
+      this.workDrop = Array.isArray(res) ? res.filter(item => item) : [];
     },
 
     changeIsDisabled(){
@@ -387,7 +387,7 @@ export default {
 	//监护人下拉框
     async selectUserList(){
       const {data:res} = await this.$http.get("/older/userList")
-      this.userList = res;
+      this.userList = Array.isArray(res) ? res.filter(item => item) : [];
     },
 
 	//修改信息

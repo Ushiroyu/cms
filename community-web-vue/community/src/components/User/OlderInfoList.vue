@@ -227,8 +227,20 @@ export default {
       insertOlder:false,
       editOlderForm:{
         photo:"",
+        communityCd:"",
+        olderName:"",
+        userId:"",
+        address:"",
+        medicalHistory:""
       },
-      addOlderForm:{olderAge:""},
+      addOlderForm:{
+        olderAge:"",
+        communityCd:"",
+        olderName:"",
+        userId:"",
+        medicalHistory:"",
+        photo:""
+      },
       editDialogVisible: false,
       addFormRules:{
         photo:[
@@ -284,7 +296,7 @@ export default {
     },
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res || [];
+      this.communities = Array.isArray(res) ? res.filter(item => item) : [];
     },
     async selectUserList(){
       const {data:res} = await this.$http.get("/older/userList")
