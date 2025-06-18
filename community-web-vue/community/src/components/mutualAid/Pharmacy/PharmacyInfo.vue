@@ -212,8 +212,11 @@ export default {
       this.queryInfo.drugType = editableTabsValue
       this.queryInfo.pharmacyId = this.$route.query.id
       const{data:res} = await this.$http.get("/medical/drugList",{params:this.queryInfo})
-      this.drugList = res;
-      this.total = this.drugList[0].total
+      const list = Array.isArray(res) ? res.filter(item => item) : []
+      this.drugList = list
+      if(this.drugList.length > 0){
+        this.total = this.drugList[0].total
+      }
       for (let i = 0; i < this.drugList.length; i++) {
         this.drugList[i].photo = require("@/" + this.drugList[i].photo)
       }
@@ -221,7 +224,7 @@ export default {
     async getDrugTypeList(){
       this.token = window.sessionStorage.getItem("roleId")
       const {data:res} = await this.$http.get("/medical/typeList")
-      this.tabList = res
+      this.tabList = Array.isArray(res) ? res.filter(item => item) : []
     },
     //搜索功能
     search(){
@@ -240,7 +243,9 @@ export default {
     },
 
     addClosed(){
-      this.$refs.addDrugFormRef.resetFields();
+      if(this.$refs.addDrugFormRef){
+        this.$refs.addDrugFormRef.resetFields();
+      }
     },
     onConfirm(){
       this.$refs.addDrugFormRef.validate(async valid => {
