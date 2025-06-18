@@ -139,7 +139,7 @@ export default {
   methods:{
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res;
+      this.communities = Array.isArray(res.data) ? res.data : [];
     },
     async getHospitalDrop(){
       const{data:res} = await this.$http.get("/medical/hospitalDrop",)

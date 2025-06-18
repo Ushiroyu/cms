@@ -265,7 +265,7 @@ export default {
     async selectAddress(){
       this.token = window.sessionStorage.getItem('roleId')
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res;
+      this.communities = Array.isArray(res.data) ? res.data : [];
     },
     handleSizeChange(newSize){
       this.queryInfo.pageSize = newSize;
