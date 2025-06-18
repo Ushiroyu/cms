@@ -149,6 +149,7 @@ export default {
       communityList:[],
       // 查询信息实体
       queryInfo:{
+        communityCd:"",
         pageNum: 1,//当前页
         pageSize: 10,//每页最大数
       },
@@ -157,8 +158,22 @@ export default {
       isDisabled:false,
       isInsert:false,//对话框状态
       isShowInfo:false,
-      communityForm:{},
-      addForm:{},
+      communityForm:{
+        communityCd:"",
+        communityName:"",
+        communityPlace:"",
+        communityArea:"",
+        peopleNumber:"",
+        oldNumber:""
+      },
+      addForm:{
+        communityCd:"",
+        communityName:"",
+        communityPlace:"",
+        communityArea:"",
+        peopleNumber:"",
+        oldNumber:""
+      },
       editFormRules:{
         communityCd:[
           {required: true,message:"请输入社区编号",trigger:"blur"},
@@ -219,7 +234,7 @@ export default {
     },
     async selectAddress(){
       const {data:res} = await this.$http.get("/User/address");
-      this.communities = res || [];
+      this.communities = Array.isArray(res) ? res.filter(item => item) : [];
     },
     async showInfo(id){
         this.isShowInfo = true;
