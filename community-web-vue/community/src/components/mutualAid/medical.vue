@@ -222,8 +222,8 @@ export default {
         //this.queryInfo.businessStatus = "1"
       }
       const{data:res} = await this.$http.get("/medical/list",{params:this.queryInfo})
-      this.medicalList = res
-      this.total = this.medicalList[0].total;
+      this.medicalList = Array.isArray(res) ? res : []
+      this.total = this.medicalList.length > 0 ? this.medicalList[0].total : 0
       for (let i = 0; i < this.medicalList.length; i++) {
         this.medicalList[i].createTime = this.$moment(this.medicalList[i].createTime).utc().format("YYYY/MM/DD HH:mm:ss")
         if(this.medicalList[i].businessType === '0'){
